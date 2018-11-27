@@ -1,16 +1,20 @@
 package io.altar.jseproject.test;
 
 //Import:
-//import io.altar.jseproject.textinterface.TextInterface;
+import io.altar.jseproject.textInterface.*;
 
 //Class with Main for Tests
 public class Development {
-
+	
 	public static void main(String[] args) {
+		StateMachine stateMachine = new StateMachine();
+		int userChoice = 0;
 		
-		// New instance for TextInterface
-//		TextInterface textInterface = new TextInterface();
-//		textInterface.userInterface();
+		while (true){
+			userChoice = stateMachine.getStates()[stateMachine.getCurrentState()].execute();
+			if (stateMachine.getCurrentState() == 0 && userChoice == 3) { break; }
+			stateMachine.setCurrentState(stateMachine.getTransitionsStates()[stateMachine.getCurrentState()][userChoice-1]);
+		}
 
 	}
 

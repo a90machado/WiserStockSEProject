@@ -40,7 +40,8 @@ public class ScannerUtils {
 		return checkGetIntFromScannerWithMax(message, max, false);
 	}
 	
-	public int checkGetIntFromScannerWithMax (String message, int[] rangeValidValues, boolean canBeNull){
+	// Interaction with user checking input and validation with range values
+	public int checkGetIntFromScannerWithRange (String message, int[] rangeValidValues, boolean canBeNull){
 		int value;
 		boolean validValue = false;
 		do {
@@ -64,6 +65,10 @@ public class ScannerUtils {
 			
 		} while (!validValue);
 		return value;
+	}
+	
+	public int checkGetIntFromScannerWithRange (String message, int[] rangeValidValues){
+		return checkGetIntFromScannerWithRange(message, rangeValidValues, false);
 	}
 	
 	// Check if variable is type.
