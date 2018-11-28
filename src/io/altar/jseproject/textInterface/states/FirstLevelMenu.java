@@ -1,4 +1,4 @@
-package io.altar.jseproject.textInterface;
+package io.altar.jseproject.textInterface.states;
 
 public class FirstLevelMenu implements State {
 
@@ -8,7 +8,7 @@ public class FirstLevelMenu implements State {
 		showMenu();
 		
 		int[] validOptions = {1,2,3};
-		return SCANNERUTILS.checkGetIntFromScannerWithRange("Select option: ", validOptions);			
+		return SCANNER_UTILS.checkGetIntFromScannerWithRange("Select option: ", validOptions);			
 	}
 	
 	public void showMenu(){
@@ -19,6 +19,7 @@ public class FirstLevelMenu implements State {
 		System.out.println("-- 2| Show Shelfs                                   --");
 		System.out.println("-- 3| Exit                                          --");
 		System.out.println("------------------------------------------------------");
+		System.out.println("");
 	}
 
 }

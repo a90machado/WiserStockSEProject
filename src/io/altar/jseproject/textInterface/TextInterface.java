@@ -1,6 +1,9 @@
 package io.altar.jseproject.textInterface;
 
-public class StateMachine {
+import io.altar.jseproject.textInterface.states.*;
+
+
+public class TextInterface {
 
 	// Attributes:
 	private State[] states = {new FirstLevelMenu(), new FirstLevelMenuProducts(), new FirstLevelMenuShelfs()};

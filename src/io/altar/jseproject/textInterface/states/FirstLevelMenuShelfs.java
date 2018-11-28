@@ -1,8 +1,8 @@
-package io.altar.jseproject.textInterface;
+package io.altar.jseproject.textInterface.states;
 
 import java.util.Iterator;
 import io.altar.jseproject.model.Shelf;
-import io.altar.jseproject.repositories.ShelfRepository;
+import io.altar.jseproject.services.ShelfService;
 
 public class FirstLevelMenuShelfs implements State {
 	
@@ -14,7 +14,7 @@ public class FirstLevelMenuShelfs implements State {
 		// Show Menu:
 		showMenu();
 		int [] validOptions = {1,2,3,4,5};
-		return SCANNERUTILS.checkGetIntFromScannerWithRange("Select option: ", validOptions);
+		return SCANNER_UTILS.checkGetIntFromScannerWithRange("Select option: ", validOptions);
 	}
 	
 	private void showMenu(){
@@ -31,8 +31,7 @@ public class FirstLevelMenuShelfs implements State {
 
 	private void showShelfsInDB() {
 		// Initializing:
-		ShelfRepository shelfRepository = ShelfRepository.getInstance();
-		Iterator<Shelf> shelfsIterator = shelfRepository.getAll();
+		Iterator<Shelf> shelfsIterator = ShelfService.getAllShelfs();
 		// Show all Products:
 		System.out.println("---------------See all Shelfs---------------");
 		while (shelfsIterator.hasNext()) {

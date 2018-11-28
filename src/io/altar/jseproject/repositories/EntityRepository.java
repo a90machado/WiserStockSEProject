@@ -4,6 +4,7 @@ package io.altar.jseproject.repositories;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
 import io.altar.jseproject.model.Entity;
 
 //Abstract Class - Data Base CRUD
@@ -12,6 +13,11 @@ public abstract class EntityRepository <T extends Entity> {
 	// Fields:
 	private Map<Long, T>  baseDeDados = new HashMap<Long, T>();
 	private long actualID = 0;
+	
+	// Size of DataBase
+	public int lenghtData(){
+		return baseDeDados.size();
+	}
 	
 	// Get ID:
 	public long getActualID() {
@@ -46,6 +52,11 @@ public abstract class EntityRepository <T extends Entity> {
 	 public Iterator<T> getAll(){
 		return baseDeDados.values().iterator();
 	}
+	 
+	 // Get all IDS
+	 public Iterator<Long> getAllIDs(){
+		 return baseDeDados.keySet().iterator();
+	 }
 	
 	 // Edit by id:
 	 public void updateByID (T entity){

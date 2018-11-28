@@ -7,7 +7,7 @@ import io.altar.jseproject.textInterface.*;
 public class Development {
 	
 	public static void main(String[] args) {
-		StateMachine stateMachine = new StateMachine();
+		TextInterface stateMachine = new TextInterface();
 		int userChoice = 0;
 		
 		while (true){

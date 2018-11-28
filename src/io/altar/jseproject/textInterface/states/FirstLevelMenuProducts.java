@@ -1,9 +1,8 @@
-package io.altar.jseproject.textInterface;
+package io.altar.jseproject.textInterface.states;
 
 import java.util.Iterator;
-
 import io.altar.jseproject.model.Product;
-import io.altar.jseproject.repositories.ProductRepository;
+import io.altar.jseproject.services.ProductService;
 
 public class FirstLevelMenuProducts implements State {
 
@@ -14,7 +13,7 @@ public class FirstLevelMenuProducts implements State {
 		// Show Menu:
 		showMenu();
 		int [] validOptions = {1,2,3,4,5};
-		return SCANNERUTILS.checkGetIntFromScannerWithRange("Select option: ", validOptions);
+		return SCANNER_UTILS.checkGetIntFromScannerWithRange("Select option: ", validOptions);
 	}
 	
 	private void showMenu(){
@@ -31,9 +30,7 @@ public class FirstLevelMenuProducts implements State {
 	
 	private void showProductsInDB(){
 		// Initializing:
-		ProductRepository productRepository = ProductRepository.getInstance();
-		Iterator<Product> productIterator = productRepository.getAll();
-
+		Iterator<Product> productIterator = ProductService.getAllProducts();
 		// Show all Products:
 		System.out.println("--------------See all Products--------------");
 		while (productIterator.hasNext()) {

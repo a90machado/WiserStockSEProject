@@ -8,13 +8,20 @@ public class Product extends Entity {
 
 	// Fields:
 	private ArrayList<Long> listShelfs;
-	private double discountPrice;
-	private double iva;
+	private int discountPrice;
+	private int iva;
 	private double pvp;
 
 	// Constructor:
-	public Product(double discountPrice, double iva, double pvp) {
+	public Product(int discountPrice, int iva, double pvp) {
 		this.listShelfs = new ArrayList<Long>();
+		this.discountPrice = discountPrice;
+		this.iva = iva;
+		this.pvp = pvp;
+	}
+	
+	public Product(ArrayList<Long> listShelfs, int discountPrice, int iva, double pvp) {
+		this.listShelfs = listShelfs;
 		this.discountPrice = discountPrice;
 		this.iva = iva;
 		this.pvp = pvp;
@@ -33,7 +40,7 @@ public class Product extends Entity {
 		return discountPrice;
 	}
 
-	public void setDiscountPrice(double discountPrice) {
+	public void setDiscountPrice(int discountPrice) {
 		this.discountPrice = discountPrice;
 	}
 	//-------------------------------------------------------
@@ -41,7 +48,7 @@ public class Product extends Entity {
 		return iva;
 	}
 
-	public void setIva(double iva) {
+	public void setIva(int iva) {
 		this.iva = iva;
 	}
 	//-------------------------------------------------------
