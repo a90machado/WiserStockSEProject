@@ -25,8 +25,10 @@ public class SecondLevelProductCreate implements State {
 		SCANNER_UTILS.checkGetIntFromScanner("Input discount (%) : ");
 		SCANNER_UTILS.checkGetIntFromScannerWithRange("Input IVA (6% , 12% and 23%) : ", rangeIvas);
 		SCANNER_UTILS.checkGetDoubleFromScanner("Input price ($) : ");
-		if (!ShelfService.isEmpty()){
-			SCANNER_UTILS.
+		if (!ShelfService.isEmpty() && ShelfService.getAllShelfsIDsWithoutProduct().hasNext()){
+			
+			
+			SCANNER_UTILS.checkGetIntFromScannerWithRange(message, rangeValidValues, true);
 		}
 	
 		

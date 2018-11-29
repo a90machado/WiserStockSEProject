@@ -1,5 +1,6 @@
 package io.altar.jseproject.repositories;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 //Import:
@@ -23,10 +24,13 @@ public class ShelfRepository extends EntityRepository<Shelf> {
 	// Get ID's without Product
 	public Iterator<Long> getIDsWithoutProduct(){
 		Iterator <Shelf> allShelfs = INSTANCE.getAll();
+		ArrayList<Long> allShelfsWithoutProduct = new ArrayList<Long>();
 		
 		while(allShelfs.hasNext()){
-			
+			if (allShelfs.next().getProduct()==null) {
+				allShelfsWithoutProduct.add(allShelfs.next().getId());
+			}
 		}
-		return 
+		return allShelfsWithoutProduct.iterator();
 	}
 }

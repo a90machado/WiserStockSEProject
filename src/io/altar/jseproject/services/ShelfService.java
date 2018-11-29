@@ -52,6 +52,11 @@ public class ShelfService {
 		return SHELF_REPOSITORY.getAllIDs();
 	}
 	
+	// Get all Shelfs ID's without products
+	public static Iterator<Long> getAllShelfsIDsWithoutProduct(){
+		return SHELF_REPOSITORY.getIDsWithoutProduct();
+	}
+	
 	// Remove Shelf
 	public static void removeShelf(long id) {
 		SHELF_REPOSITORY.removeByID(id);
