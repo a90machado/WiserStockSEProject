@@ -1,7 +1,9 @@
 package io.altar.jseproject.services;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
+import io.altar.jseproject.model.Product;
 import io.altar.jseproject.model.Shelf;
 import io.altar.jseproject.repositories.ShelfRepository;
 
@@ -9,6 +11,12 @@ public class ShelfService {
 
 	// Initializing;
 	private static final ShelfRepository SHELF_REPOSITORY = ShelfRepository.getInstance();
+	
+	//
+	public static void addProductToShelf(Shelf shelf, long idProduct){
+		shelf.setProduct(ProductService.getProductById(idProduct));
+		SHELF_REPOSITORY.updateByID(shelf);
+	}
 	
 	// Create Shelf
 	public static void createShelf(int capacity, float price) {
@@ -53,7 +61,7 @@ public class ShelfService {
 	}
 	
 	// Get all Shelfs ID's without products
-	public static Iterator<Long> getAllShelfsIDsWithoutProduct(){
+	public static ArrayList<Long> getAllShelfsIDsWithoutProduct(){
 		return SHELF_REPOSITORY.getIDsWithoutProduct();
 	}
 	

@@ -25,6 +25,12 @@ public class ProductService {
 		public static int getSizeOfData(){
 			return PRODUCT_REPOSITORY.lenghtData();				
 		}
+		
+	// Get id of a product
+	public long getID(Product product){
+		PRODUCT_REPOSITORY.getActualID();
+		return id;
+	}
 	
 	// Get Product by ID
 	public static Product getProductById (long id){

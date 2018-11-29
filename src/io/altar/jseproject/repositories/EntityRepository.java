@@ -14,6 +14,7 @@ public abstract class EntityRepository <T extends Entity> {
 	private Map<Long, T>  baseDeDados = new HashMap<Long, T>();
 	private long actualID = 0;
 	
+	
 	// Size of DataBase
 	public int lenghtData(){
 		return baseDeDados.size();

@@ -3,6 +3,7 @@ package io.altar.jseproject.repositories;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import io.altar.jseproject.model.Product;
 //Import:
 import io.altar.jseproject.model.Shelf;
 
@@ -22,7 +23,7 @@ public class ShelfRepository extends EntityRepository<Shelf> {
 	}
 	
 	// Get ID's without Product
-	public Iterator<Long> getIDsWithoutProduct(){
+	public ArrayList<Long> getIDsWithoutProduct(){
 		Iterator <Shelf> allShelfs = INSTANCE.getAll();
 		ArrayList<Long> allShelfsWithoutProduct = new ArrayList<Long>();
 		
@@ -31,6 +32,8 @@ public class ShelfRepository extends EntityRepository<Shelf> {
 				allShelfsWithoutProduct.add(allShelfs.next().getId());
 			}
 		}
-		return allShelfsWithoutProduct.iterator();
+		return allShelfsWithoutProduct;
 	}
+	
+	
 }
