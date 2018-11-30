@@ -14,7 +14,7 @@ public class ScannerUtils {
 		do{
 			System.out.println(message);
 			userInput= scanner.nextLine();
-		} while (!userInput.equals('Y')&&!userInput.equals('n'));
+		} while (!userInput.equals("Y")&&!userInput.equals("n"));
 		return userInput;
 	}
 

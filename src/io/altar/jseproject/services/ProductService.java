@@ -22,14 +22,18 @@ public class ProductService {
 	}
 	
 	// Get size of Data
-		public static int getSizeOfData(){
-			return PRODUCT_REPOSITORY.lenghtData();				
-		}
+	public static int getSizeOfData(){
+		return PRODUCT_REPOSITORY.lenghtData();				
+	}
+	
+	// Get actual product ID
+	public static long getActualID(){
+		return PRODUCT_REPOSITORY.getActualID();
+	}
 		
-	// Get id of a product
-	public long getID(Product product){
-		PRODUCT_REPOSITORY.getActualID();
-		return id;
+	// Get next product ID
+	public static long getNextID(){
+		return PRODUCT_REPOSITORY.nextID();
 	}
 	
 	// Get Product by ID

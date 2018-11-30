@@ -9,6 +9,7 @@ import javax.lang.model.element.Element;
 
 import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
 
+import io.altar.jseproject.model.Product;
 import io.altar.jseproject.model.Shelf;
 import io.altar.jseproject.services.ProductService;
 import io.altar.jseproject.services.ShelfService;
@@ -40,7 +41,7 @@ public class SecondLevelProductCreate implements State {
 		if (!ShelfService.getAllShelfsIDsWithoutProduct().isEmpty()){
 			// ask if want to add product to a shelf
 			String answer = SCANNER_UTILS.checkGetYesOrNoAnswer("Do you want to add this product to a Shelf? (Y/n)");
-			if (answer.equals('Y')) {
+			if (answer.equals("Y")) {
 				addToShelf();	
 			} else { ProductService.createProduct(discount, iva, pvp); }
 		} else { ProductService.createProduct(discount, iva, pvp); }
@@ -48,15 +49,29 @@ public class SecondLevelProductCreate implements State {
 	
 	private void addToShelf(){
 		ArrayList<Long> rangeShelfsIDs = ShelfService.getAllShelfsIDsWithoutProduct();
+		int sizeInit = rangeShelfsIDs.size();
 		ArrayList<Long> shelfsToProduct = new ArrayList<Long>();
 		long id;
+		
+		
 		do{
 			id = SCANNER_UTILS.checkGetLongFromScannerWithRange("Input Shelf ID (press Enter to exit): ", rangeShelfsIDs, true);
-			ShelfService.addProductToShelf(ShelfService.getShelfById(id),);
-			rangeShelfsIDs.remove(rangeShelfsIDs.indexOf(id));
-			shelfsToProduct.add(id);
+			if (id !=-1){
+				rangeShelfsIDs.remove(rangeShelfsIDs.indexOf(id));
+				shelfsToProduct.add(id);	
+			}
 		}while (id != -1 && !rangeShelfsIDs.isEmpty());
+		
 		ProductService.createProduct(shelfsToProduct, discount, iva, pvp);
+		
+		for (int i = 0; i < shelfsToProduct.size(); i++) {
+			
+			long idShelf = shelfsToProduct.get(i);
+			
+			ShelfService.addProductToShelf(ShelfService.getShelfById(idShelf),ProductService.getActualID());
+			
+		}
+		
 	}
 	
 }

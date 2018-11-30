@@ -15,7 +15,7 @@ public class ShelfService {
 	//
 	public static void addProductToShelf(Shelf shelf, long idProduct){
 		shelf.setProduct(ProductService.getProductById(idProduct));
-		SHELF_REPOSITORY.updateByID(shelf);
+		//SHELF_REPOSITORY.updateByID(shelf);
 	}
 	
 	// Create Shelf

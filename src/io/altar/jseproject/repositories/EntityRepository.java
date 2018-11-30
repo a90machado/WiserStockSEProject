@@ -26,7 +26,7 @@ public abstract class EntityRepository <T extends Entity> {
 	}
 	
 	// Prepare for next ID
-	private long nextID(){
+	public long nextID(){
 		return actualID++;
 	}
 
