@@ -1,16 +1,7 @@
 package io.altar.jseproject.textInterface.states;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
-
-import javax.lang.model.element.Element;
-
-import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
-
-import io.altar.jseproject.model.Product;
-import io.altar.jseproject.model.Shelf;
 import io.altar.jseproject.services.ProductService;
 import io.altar.jseproject.services.ShelfService;
 
@@ -49,10 +40,8 @@ public class SecondLevelProductCreate implements State {
 	
 	private void addToShelf(){
 		ArrayList<Long> rangeShelfsIDs = ShelfService.getAllShelfsIDsWithoutProduct();
-		int sizeInit = rangeShelfsIDs.size();
 		ArrayList<Long> shelfsToProduct = new ArrayList<Long>();
 		long id;
-		
 		
 		do{
 			id = SCANNER_UTILS.checkGetLongFromScannerWithRange("Input Shelf ID (press Enter to exit): ", rangeShelfsIDs, true);

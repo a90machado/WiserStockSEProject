@@ -3,7 +3,6 @@ package io.altar.jseproject.services;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import io.altar.jseproject.model.Product;
 import io.altar.jseproject.model.Shelf;
 import io.altar.jseproject.repositories.ShelfRepository;
 
