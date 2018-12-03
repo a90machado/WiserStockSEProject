@@ -34,7 +34,7 @@ public class SecondLevelMenuProductEdit implements State{
 		iva = SCANNER_UTILS.checkGetIntFromScannerWithRange("Input IVA (6% , 12% and 23%) (" + editProduct.getIva() + ") " + " : ", rangeIvas, true);
 		pvp = SCANNER_UTILS.checkGetDoubleFromScanner("Input price ($) (" + editProduct.getPvp() + ") " + " : ", true);
 		
-		
+		x
 		
 		if (discount!=-1) {
 			editProduct.setDiscountPrice(discount);
