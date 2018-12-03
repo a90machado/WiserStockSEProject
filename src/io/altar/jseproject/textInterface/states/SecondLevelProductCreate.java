@@ -8,8 +8,8 @@ import io.altar.jseproject.services.ShelfService;
 public class SecondLevelProductCreate implements State {
 	
 	// Attributes:
-	int discount, iva;
-	double pvp;
+	private int discount, iva;
+	private double pvp;
 	
 	
 	@Override
@@ -54,9 +54,7 @@ public class SecondLevelProductCreate implements State {
 		ProductService.createProduct(shelfsToProduct, discount, iva, pvp);
 		
 		for (int i = 0; i < shelfsToProduct.size(); i++) {
-			
 			long idShelf = shelfsToProduct.get(i);
-			
 			ShelfService.addProductToShelf(ShelfService.getShelfById(idShelf),ProductService.getActualID());
 			
 		}

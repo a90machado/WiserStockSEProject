@@ -6,7 +6,11 @@ import io.altar.jseproject.textInterface.states.*;
 public class TextInterface {
 
 	// Attributes:
-	private State[] states = {new FirstLevelMenu(), new FirstLevelMenuProducts(), new FirstLevelMenuShelfs(), new SecondLevelProductCreate(), new SecondLevelShelfCreate()};
+	private State[] states = {new FirstLevelMenu(), 
+							  new FirstLevelMenuProducts(), 
+							  new FirstLevelMenuShelfs(), 
+							  new SecondLevelProductCreate()};
+	
 	private int transitionsStates [][] = {{1,2},
 			  							  {3,5,7,9,0},
 			  							  {4,6,8,10,0},
