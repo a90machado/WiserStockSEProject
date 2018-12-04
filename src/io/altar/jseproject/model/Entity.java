@@ -6,7 +6,7 @@ public class Entity {
 	// Attributes:
 	private long id;
 
-	// Get and Set:
+	// Get and Set ID:
 	public long getId() {
 		return id;
 	}
