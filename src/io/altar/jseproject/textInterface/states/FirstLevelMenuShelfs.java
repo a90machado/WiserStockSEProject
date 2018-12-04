@@ -31,7 +31,7 @@ public class FirstLevelMenuShelfs implements State {
 
 	private void showShelfsInDB() {
 		// Initializing:
-		Iterator<Shelf> shelfsIterator = ShelfService.getAllShelfs();
+		Iterator<Shelf> shelfsIterator = ShelfService.getAllShelfs().iterator();
 		// Show all Products:
 		System.out.println("---------------See all Shelfs---------------");
 		while (shelfsIterator.hasNext()) {

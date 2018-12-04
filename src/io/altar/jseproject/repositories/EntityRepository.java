@@ -1,10 +1,10 @@
 package io.altar.jseproject.repositories;
 
+
 //Imports:
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.Map;
-
 import io.altar.jseproject.model.Entity;
 
 //Abstract Class - Data Base CRUD
@@ -50,13 +50,13 @@ public abstract class EntityRepository <T extends Entity> {
 	}
 	
 	// Get all:
-	 public Iterator<T> getAll(){
-		return baseDeDados.values().iterator();
+	 public Collection<T> getAll(){
+		return baseDeDados.values();
 	}
 	 
 	 // Get all IDS
-	 public Iterator<Long> getAllIDs(){
-		 return baseDeDados.keySet().iterator();
+	 public Collection<Long> getAllIDs(){
+		 return baseDeDados.keySet();
 	 }
 	
 	 // Edit by id:

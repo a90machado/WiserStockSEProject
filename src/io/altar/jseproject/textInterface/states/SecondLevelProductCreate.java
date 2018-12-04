@@ -39,7 +39,7 @@ public class SecondLevelProductCreate implements State {
 	}
 	
 	private void addToShelf(){
-		ArrayList<Long> rangeShelfsIDs = ShelfService.getAllShelfsIDsWithoutProduct();
+		ArrayList<Long> rangeShelfsIDs = new ArrayList<Long>(ShelfService.getAllShelfsIDsWithoutProduct());
 		ArrayList<Long> shelfsToProduct = new ArrayList<Long>();
 		long id;
 		

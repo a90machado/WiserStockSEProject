@@ -30,7 +30,7 @@ public class FirstLevelMenuProducts implements State {
 	
 	private void showProductsInDB(){
 		// Initializing:
-		Iterator<Product> productIterator = ProductService.getAllProducts();
+		Iterator<Product> productIterator = ProductService.getAllProducts().iterator();
 		// Show all Products:
 		System.out.println("--------------See all Products--------------");
 		while (productIterator.hasNext()) {
