@@ -247,8 +247,9 @@ public class ScannerUtils {
 				if (isType(userSplited[i], "Long")==false) {
 					wrongInput = true;
 					shelfsToSave = new ArrayList<Long>();
+				} else {
+					shelfsToSave.add(Long.parseLong(userSplited[i]));
 				}
-				shelfsToSave.add(Long.parseLong(userSplited[i]));
 			}
 		} while (wrongInput==true);
 		
