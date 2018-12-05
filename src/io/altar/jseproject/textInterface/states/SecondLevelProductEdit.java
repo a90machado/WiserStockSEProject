@@ -52,8 +52,11 @@ public class SecondLevelProductEdit implements State {
 				shelfIDs = SCANNER_UTILS.checkTest("Input all Shelfs ID's or press Enter to delete ("
 						+ editProduct.getListShelfs().toString() + ") :", rangeIDsShelfsWithoutProduct, true);		
 			}
-			if(editProduct.getListShelfs()==null) {
+			
+			if(shelfIDs==null && editProduct.getListShelfs().size()==0) {
 				ProductService.updateByID(editProduct, discount, iva, pvp, shelfIDs);
+				
+				// dois ifs checkaar as varias condicoes,tem produtos ou nao e vem vazia ou nao
 			} else {
 				Iterator<Long> productsToDelete = editProduct.getListShelfs().iterator();
 				while(productsToDelete.hasNext()) {
@@ -61,6 +64,7 @@ public class SecondLevelProductEdit implements State {
 					ShelfService.getShelfById(id).setProduct(null);
 				}
 				ProductService.updateByID(editProduct, discount, iva, pvp, shelfIDs);
+				ShelfService.addShelf(shelfIDs, editProduct);
 			}
 			
 		}

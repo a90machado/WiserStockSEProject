@@ -21,7 +21,6 @@ public class ProductService {
 	public static void createProduct (ArrayList<Long> shelfsIDs, int discount, int iva, double pvp){
 		Product newProduct = new Product(shelfsIDs, discount, iva, pvp);
 		PRODUCT_REPOSITORY.save(newProduct);
-		addShelf(shelfsIDs, newProduct);
 	}
 	
 	// Get size of Data
@@ -84,14 +83,6 @@ public class ProductService {
 	
 	public static void addShelf(long idProduct, long idShelf) {
 		PRODUCT_REPOSITORY.findByID(idProduct).getListShelfs().add(idShelf);
-	}
-	
-	public static void addShelf(ArrayList<Long> shelfsIDs, Product productToInsert) {
-		Iterator <Long> insertProductOnShelfs = shelfsIDs.iterator();
-		while(insertProductOnShelfs.hasNext()) {
-			long id = insertProductOnShelfs.next();
-			ShelfService.getShelfById(id).setProduct(productToInsert);
-		}
 	}
 
 }

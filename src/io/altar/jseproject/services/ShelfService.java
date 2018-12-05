@@ -1,6 +1,10 @@
 package io.altar.jseproject.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+
+import io.altar.jseproject.model.Product;
 import io.altar.jseproject.model.Shelf;
 import io.altar.jseproject.repositories.ShelfRepository;
 
@@ -70,6 +74,15 @@ public class ShelfService {
 	// Remove Shelf
 	public static void removeShelf(long id) {
 		SHELF_REPOSITORY.removeByID(id);
+	}
+	
+	//
+	public static void addShelf(ArrayList<Long> shelfsIDs, Product productToInsert) {
+		Iterator <Long> insertProductOnShelfs = shelfsIDs.iterator();
+		while(insertProductOnShelfs.hasNext()) {
+			long id = insertProductOnShelfs.next();
+			SHELF_REPOSITORY.findByID(id).setProduct(productToInsert);
+		}
 	}
 
 }
