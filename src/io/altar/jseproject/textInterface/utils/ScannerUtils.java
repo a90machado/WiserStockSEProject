@@ -3,6 +3,9 @@ package io.altar.jseproject.textInterface.utils;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import io.altar.jseproject.services.ProductService;
+import io.altar.jseproject.services.ShelfService;
+
 public class ScannerUtils {
 
 	// Initializing:
@@ -226,27 +229,32 @@ public class ScannerUtils {
 	// TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
 	
 	public ArrayList<Long> checkTest(String message, ArrayList<Long> rangeValidValues, boolean canBeNull){
-		
-		String userInput;
-		System.out.println(message);
-		userInput = scanner.nextLine();
+		//ask input
+		boolean wrongInput = false;
 		ArrayList<Long> shelfsToSave = new ArrayList<Long>();
-		String[] userSplited = userInput.trim().split("\\s+");
-		
-		//
-		if(canBeNull && !userInput.equals("")) {
-		
-			for (int i = 0; i < userSplited.length; i++) {
-				
-				if (isType(userSplited[i],"Long")==false) { checkTest(message,rangeValidValues, canBeNull); }
-				else { shelfsToSave.add(Long.parseLong(userSplited[i])); }
+		do {
+			String[] userSplited;
+			String userInput;
+			System.out.println(message);
+			userInput = scanner.nextLine();
+			userSplited = userInput.trim().split("\\s+");
+			//treat input
+			if (canBeNull && userInput.equals("")) {
+				return shelfsToSave;
 			}
-		} else {
-			return null;
-		} 
+			
+			for (int i = 0; i < userSplited.length; i++) {
+				if (isType(userSplited[i], "Long")==false) {
+					wrongInput = true;
+					shelfsToSave = new ArrayList<Long>();
+				}
+				shelfsToSave.add(Long.parseLong(userSplited[i]));
+			}
+		} while (wrongInput==true);
 		
 		return shelfsToSave;
 	}
+	
 
 }
 

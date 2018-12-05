@@ -7,7 +7,7 @@ import io.altar.jseproject.model.Product;
 import io.altar.jseproject.services.ProductService;
 import io.altar.jseproject.services.ShelfService;
 
-public class SecondLevelMenuProductEdit implements State {
+public class SecondLevelProductEdit implements State {
 
 	// Attributes:
 	private int discount, iva;
@@ -18,7 +18,6 @@ public class SecondLevelMenuProductEdit implements State {
 	public int execute() {
 
 		if (!ProductService.isEmpty()) {
-
 			// Show all exist Products ID's
 			showProductsInDB();
 
@@ -39,39 +38,35 @@ public class SecondLevelMenuProductEdit implements State {
 
 		long id = SCANNER_UTILS.checkGetLongFromScannerWithRange("Input Shelf ID (press Enter to exit): ",
 				rangeIDsExist, true);
-
 		if (id != -1) {
-
 			Product editProduct = ProductService.getProductById(id);
-			ArrayList<Long> rangeIDsShelfsWithoutProduct = new ArrayList<Long>(
-					ShelfService.getAllShelfsIDsWithoutProduct());
-
 			discount = SCANNER_UTILS.checkGetIntFromScannerWithMax(
 					"Input discount (%) (" + editProduct.getDiscountPrice() + ") " + " : ", 100, true);
 			iva = SCANNER_UTILS.checkGetIntFromScannerWithRange(
 					"Input IVA (6% , 12% and 23%) (" + editProduct.getIva() + ") " + " : ", rangeIvas, true);
 			pvp = SCANNER_UTILS.checkGetDoubleFromScanner("Input price ($) (" + editProduct.getPvp() + ") " + " : ",
 					true);
-
 			if (!ShelfService.getAllShelfsIDsWithoutProduct().isEmpty()) {
-
+				ArrayList<Long> rangeIDsShelfsWithoutProduct = getRangeForShelfEdit(id);
+				System.out.println(rangeIDsShelfsWithoutProduct);
 				shelfIDs = SCANNER_UTILS.checkTest("Input all Shelfs ID's or press Enter to delete ("
-						+ editProduct.getListShelfs().toString() + ") :", rangeIDsShelfsWithoutProduct, true);
-				if(shelfIDs == null) {
-					shelfIDs = new ArrayList<Long>();
-					editProduct.setListShelfs(shelfIDs);
-				}
+						+ editProduct.getListShelfs().toString() + ") :", rangeIDsShelfsWithoutProduct, true);		
 			}
-
-			if (discount != -1) {
-				editProduct.setDiscountPrice(discount);
+			ProductService.updateByID(editProduct, discount, iva, pvp, shelfIDs);
+		}
+	}
+	
+	public ArrayList<Long> getRangeForShelfEdit(long id){
+		ArrayList<Long> normalRange = new ArrayList<Long> (ShelfService.getAllShelfsIDsWithoutProduct());
+		ArrayList<Long> productShelfs = new ArrayList<Long>(ProductService.getProductById(id).getListShelfs());
+		
+		if (productShelfs.isEmpty()) {
+			return normalRange;
+		}else {
+			for (int i = 0; i < productShelfs.size(); i++) {
+				normalRange.add(productShelfs.get(i));
 			}
-			if (iva != -1) {
-				editProduct.setIva(iva);
-			}
-			if (pvp != -1) {
-				editProduct.setPvp(pvp);
-			}
+			return normalRange;
 		}
 	}
 

@@ -10,7 +10,7 @@ public class TextInterface {
 							  new FirstLevelMenuProducts(),	 
 							  new FirstLevelMenuShelfs(),
 							  new SecondLevelProductCreate(),
-							  new SecondLevelMenuProductEdit(),
+							  new SecondLevelProductEdit(),
 							  new SecondLevelProductShowDetails(),
 							  new SecondLevelProductDelete(),
 							  new SecondLevelShelfCreate(),};

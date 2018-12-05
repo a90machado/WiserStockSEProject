@@ -52,9 +52,21 @@ public class ProductService {
 		return PRODUCT_REPOSITORY.getAllIDs();
 	}
 	
-	// Edit Product
-	public static void editProduct (Product editProduct){
-		PRODUCT_REPOSITORY.save(editProduct);
+	// Update by ID
+	public static void updateByID (Product editProduct,int discount,int iva,double pvp, ArrayList<Long> shelfsToSave) {
+		
+		editProduct.setListShelfs(shelfsToSave);
+		if (discount != -1) {
+			editProduct.setDiscountPrice(discount);
+		}
+		if (iva != -1) {
+			editProduct.setIva(iva);
+		}
+		if (pvp != -1) {
+			editProduct.setPvp(pvp);
+		}
+		
+		PRODUCT_REPOSITORY.updateByID(editProduct);
 	}
 	
 	// Remove Product
