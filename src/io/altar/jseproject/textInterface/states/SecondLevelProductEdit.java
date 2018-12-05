@@ -52,7 +52,17 @@ public class SecondLevelProductEdit implements State {
 				shelfIDs = SCANNER_UTILS.checkTest("Input all Shelfs ID's or press Enter to delete ("
 						+ editProduct.getListShelfs().toString() + ") :", rangeIDsShelfsWithoutProduct, true);		
 			}
-			ProductService.updateByID(editProduct, discount, iva, pvp, shelfIDs);
+			if(editProduct.getListShelfs()==null) {
+				ProductService.updateByID(editProduct, discount, iva, pvp, shelfIDs);
+			} else {
+				Iterator<Long> productsToDelete = editProduct.getListShelfs().iterator();
+				while(productsToDelete.hasNext()) {
+					id = productsToDelete.next();
+					ShelfService.getShelfById(id).setProduct(null);
+				}
+				ProductService.updateByID(editProduct, discount, iva, pvp, shelfIDs);
+			}
+			
 		}
 	}
 	
