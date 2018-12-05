@@ -78,5 +78,9 @@ public class ProductService {
 	public static boolean isEmpty(){
 		return PRODUCT_REPOSITORY.isEmpty();
 	}
+	
+	public static void addShelf(long idProduct, long idShelf) {
+		PRODUCT_REPOSITORY.findByID(idProduct).getListShelfs().add(idShelf);
+	}
 
 }

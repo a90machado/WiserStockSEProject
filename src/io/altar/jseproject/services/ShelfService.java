@@ -16,12 +16,12 @@ public class ShelfService {
 	}
 	
 	// Create Shelf
-	public static void createShelf(int capacity, float price) {
+	public static void createShelf(int capacity, double price) {
 		Shelf newShelf = new Shelf(capacity, price);
 		SHELF_REPOSITORY.save(newShelf);
 	}
 	
-	public static void createShelf (Long productIDs, int capacity, float price) {
+	public static void createShelf (Long productIDs, int capacity, double price) {
 		Shelf newShelf = new Shelf(productIDs,capacity,price);
 		SHELF_REPOSITORY.save(newShelf);
 	}
@@ -36,6 +36,11 @@ public class ShelfService {
 		Shelf searchShelf = SHELF_REPOSITORY.findByID(id);
 		return searchShelf;
 	}
+	
+	// Get actual shelf ID
+		public static long getActualID(){
+			return SHELF_REPOSITORY.getActualID();
+		}
 	
 	// Edit Shelf
 	public static void editShelf (Shelf editShelf) {

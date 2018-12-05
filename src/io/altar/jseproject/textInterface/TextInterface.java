@@ -13,7 +13,10 @@ public class TextInterface {
 							  new SecondLevelProductEdit(),
 							  new SecondLevelProductShowDetails(),
 							  new SecondLevelProductDelete(),
-							  new SecondLevelShelfCreate(),};
+							  new SecondLevelShelfCreate(),
+							  new SecondLevelShelfEdit(),
+							  new SecondLevelShelfShowDetails(),
+							  new SecondLevelShelfDelete()};
 	
 	private int transitionsStates [][] = {{1,2},      	// Main Menu  
 										  {3,4,5,6,0},	// Product Menu
@@ -22,7 +25,10 @@ public class TextInterface {
 										  {1},	// Product Edit Menu
 										  {1},	// Product Details Menu
 										  {1},	// Product Delete Menu
-										  {3}	// Shelf Create Menu
+										  {2},	// Shelf Create Menu
+										  {2},	// Shelf Edit Menu
+										  {2},	// Shelf Details Menu
+										  {2}	// Shelf Delete Menu
 										 };
 	private int currentState = 0;
 	
