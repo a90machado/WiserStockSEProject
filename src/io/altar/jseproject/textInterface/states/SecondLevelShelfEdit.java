@@ -41,7 +41,7 @@ public class SecondLevelShelfEdit implements State {
 			
 			Shelf editShelf = ShelfService.getShelfById(id);
 			getInputs(editShelf);
-			//ShelfService.updateByID(editShelf, capacity, price, idProduct);
+			ShelfService.updateByID(editShelf, capacity, price, ProductService.getProductById(idProduct));
 			
 		}
 

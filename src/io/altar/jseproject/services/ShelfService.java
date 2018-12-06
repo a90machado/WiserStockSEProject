@@ -98,7 +98,10 @@ public class ShelfService {
 		}
 		if (product!=null) {
 			editShelf.setProduct(product);
+		} else {
+			editShelf.setProduct(null);
 		}
+		
 		SHELF_REPOSITORY.updateByID(editShelf);
 	}
 
