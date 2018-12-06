@@ -51,11 +51,12 @@ public class SecondLevelProductCreate implements State {
 			}
 		}while (id != -1 && !rangeShelfsIDs.isEmpty());
 		
+		System.out.println(shelfsToProduct);
 		ProductService.createProduct(shelfsToProduct, discount, iva, pvp);
 		
 		for (int i = 0; i < shelfsToProduct.size(); i++) {
 			long idShelf = shelfsToProduct.get(i);
-			ShelfService.addProductToShelf(ShelfService.getShelfById(idShelf),ProductService.getActualID());
+			ShelfService.addProductToShelf(idShelf,ProductService.getActualID()-1);
 			
 		}
 		

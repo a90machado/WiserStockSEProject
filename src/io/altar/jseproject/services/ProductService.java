@@ -58,6 +58,7 @@ public class ProductService {
 	public static void updateByID (Product editProduct,int discount,int iva,double pvp, ArrayList<Long> shelfsToSave) {
 		
 		editProduct.setListShelfs(shelfsToSave);
+		
 		if (discount != -1) {
 			editProduct.setDiscountPrice(discount);
 		}

@@ -53,11 +53,10 @@ public class SecondLevelProductEdit implements State {
 						+ editProduct.getListShelfs().toString() + ") :", rangeIDsShelfsWithoutProduct, true);		
 			}
 			
-			if(shelfIDs==null && editProduct.getListShelfs().size()==0) {
+			if(shelfIDs==null && editProduct.getListShelfs().size()>=0) {
 				ProductService.updateByID(editProduct, discount, iva, pvp, shelfIDs);
 				
-				// dois ifs checkaar as varias condicoes,tem produtos ou nao e vem vazia ou nao
-			} else {
+			} else if (shelfIDs!=null && editProduct.getListShelfs().size()>0)  {
 				Iterator<Long> productsToDelete = editProduct.getListShelfs().iterator();
 				while(productsToDelete.hasNext()) {
 					id = productsToDelete.next();

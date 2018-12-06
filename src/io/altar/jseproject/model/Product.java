@@ -66,6 +66,13 @@ public class Product extends Entity {
 		this.listShelfs.add(e);
 	}
 	
+	public void removeFromListShelfs(long idShelf) {
+		for (int i = 0; i < listShelfs.size(); i++) {
+			if (listShelfs.equals(idShelf)) { this.listShelfs.remove(i); }
+		}
+		
+	}
+	
 	// Override method toString:
 	@Override
 	public String toString() {
